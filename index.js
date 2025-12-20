@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config(); // Kích hoạt thư viện đọc file .env
 
+const cors = require('cors');
+
+
 // Gọi file route (đường dẫn này không đổi)
 const projectRoutes = require('./routes/projectRoutes');
 const contactRoutes = require('./routes/contactRoutes');
@@ -12,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 //Cho phép đọc dự liệu JSON
 app.use(express.json());
+app.use(cors());
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGODB_URI)
