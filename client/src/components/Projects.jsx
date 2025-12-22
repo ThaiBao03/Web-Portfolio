@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom';
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -45,9 +48,12 @@ const Projects = () => {
                   />
                   {/* Lớp phủ khi hover */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                      Xem Chi Tiết
-                    </button>
+                    <Link 
+                      to={`/project/${project._id}`} // Dẫn sang trang detail kèm ID
+                      className="bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 block"
+                    >
+                      Xem Code
+                    </Link>
                   </div>
                 </div>
 

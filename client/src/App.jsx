@@ -1,25 +1,37 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero.jsx'
 import Navbar from './components/Navbar.jsx'
 import Projects from './components/Projects.jsx'
+import Contact from './components/Contact.jsx'
+import Footer from './components/Footer.jsx'
+import ProjectDetail from './components/ProjectDetail'; // Import trang mới
+
+const Home = () => (
+  <>
+    <Hero />
+    <Projects />
+    <Contact />
+  </>
+);
 
 function App() {
 
   return (
-    <div className="bg-neutral-900 min-h-screen text-white">
-      <Navbar />
+    <Router>
+      <div className="bg-neutral-900 min-h-screen text-white">
+        <Navbar /> {/* Navbar luôn hiện ở mọi trang */}
+        
+        <Routes>
+          {/* Đường dẫn trang chủ */}
+          <Route path="/" element={<Home />} />
+          
+          {/* Đường dẫn trang chi tiết (kèm ID) */}
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
 
-      <Hero />
-
-      <Projects />
-    </div>
-
-
-
-
-    // <div class="bg-[url(./imgs/Anh-1.png)] bg-cover bg-fixed bg-center w-full h-screen flex justify-center items-center">
-    //     <h1 class="text-[120px] font-extrabold text-transparent bg-clip-text bg-[url(./imgs/Anh-2.png)] bg-fixed bg-cover bg-center">HELLO TAILWIND</h1>
-    //     <div class="h-100vh"></div>
-    // </div>
+        <Footer /> {/* Footer luôn hiện ở mọi trang */}
+      </div>
+    </Router>
   )
 }
 
